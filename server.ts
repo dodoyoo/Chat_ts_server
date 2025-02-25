@@ -33,7 +33,7 @@ io.on('connection', (socket: CustomSocket) => {
     io.sockets.emit('update', {
       type: 'connect',
       name: 'SERVER',
-      message: `${name} 님이 접속하였습니다.`,
+      message: `${name}님이 접속하였습니다.`,
     });
   });
 
@@ -47,12 +47,12 @@ io.on('connection', (socket: CustomSocket) => {
 
   socket.on('disconnect', () => {
     if (socket.name) {
-      console.log(socket.name + ' 님이 나갔습니다.');
+      console.log(socket.name + '님이 나갔습니다.');
 
       socket.broadcast.emit('update', {
         type: 'disconnect',
         name: 'SERVER',
-        message: `${socket.name} 님이 나갔습니다.`,
+        message: `${socket.name}님이 나갔습니다.`,
       });
     }
   });
