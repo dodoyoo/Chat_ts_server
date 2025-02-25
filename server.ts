@@ -4,10 +4,33 @@ import { AppDataSource } from './src/models/dataSource';
 import { createApp } from './app';
 import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
+import { createServer } from 'http';
+import { Server } from 'socket.io';
 
 const app = createApp();
 const port = process.env.PORT || 3000;
 const HOST = process.env.HOST;
+const server = createServer(app);
+
+const io = new Server(server, {
+  cors: {
+    origin: '*',
+    methods: ['GET', 'POST'],
+  },
+});
+
+io.on('connection', (socket) => {
+  console.log('A user connected:', socket.id);
+
+  socket.on('message', (data) => {
+    console.log('Received message:', data);
+    io.emit('message', data); // 모든 클라이언트에게 메시지 전송
+  });
+
+  socket.on('disconnect', () => {
+    console.log('A user disconnected:', socket.id);
+  });
+});
 
 const swaggerDefinition = {
   openapi: '3.0.0',
@@ -43,7 +66,7 @@ const swaggerSpec = swaggerJSDoc(options);
         next(err);
       });
 
-      app.listen(port, async () => {
+      server.listen(port, async () => {
         console.log(`Server is running on port ${port}`);
         console.log(
           `Swagger docs available at http://localhost:${port}/api-docs`
