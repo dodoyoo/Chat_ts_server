@@ -7,6 +7,8 @@
   text-align: center;
   width: 500px;
   height: 800px;
+  display: flex;
+  flex-direction: column;
 }
 
 /* 채팅 영역 */
@@ -14,40 +16,49 @@
   height: 90%;
   width: 100%;
   overflow-y: auto;
-}
-
-/* 접속 알림 */
-.connect {
-  width: 90%;
-  margin: auto;
-  background-color: aquamarine;
-  text-align: center;
-  margin-top: 10px;
-}
-
-/* 접속 종료 알림 */
-.disconnect {
-  width: 90%;
-  margin: auto;
-  background-color: indianred;
-  text-align: center;
-  margin-top: 10px;
+  display: flex;
+  flex-direction: column-reverse;
+  padding: 10px;
 }
 
 /* 내가 보낸 메시지 */
 .me {
+  align-self: flex-end;
   width: 90%;
   margin: auto;
   background-color: lemonchiffon;
   border-radius: 5px;
   margin-top: 10px;
+  max-width: 70%;
+  text-align: right;
 }
 
 /* 상대방이 보낸 메시지 */
 .other {
+  align-self: flex-start;
   width: 90%;
   margin: auto;
   background-color: white;
   border-radius: 5px;
   margin-top: 10px;
+  max-width: 70%;
+  text-align: left;
 }
+
+/* .connect,
+.disconnect {
+  width: 90%;
+  margin: 10px auto;
+  background-color: aquamarine; 
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+} */
+
+/* 서버 메시지 스타일 */
+/* .connect {
+  background-color: lightgreen;
+}
+.disconnect {
+  background-color: indianred;
+} */

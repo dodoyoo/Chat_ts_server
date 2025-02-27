@@ -1,5 +1,10 @@
 var socket = io();
 
+function scrollToBottom() {
+  if (chat) {
+    chat.scrollTop = chat.scrollHeight;
+  }
+}
 /* 접속 되었을 때 실행 */
 socket.on('connect', function () {
   /* 이름을 입력받고 */
@@ -40,6 +45,7 @@ socket.on('update', function (data) {
   message.classList.add(className);
   message.appendChild(node);
   chat.appendChild(message);
+  chat.scrollToBottom();
 });
 
 /* 메시지 전송 함수 */
@@ -60,4 +66,5 @@ function send() {
 
   // 서버로 message 이벤트 전달 + 데이터와 함께
   socket.emit('message', { type: 'message', message: message });
+  chat.scrollToBottom();
 }
