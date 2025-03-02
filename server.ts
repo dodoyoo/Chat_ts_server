@@ -6,7 +6,6 @@ import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
 import { createServer } from 'http';
 import { Server, Socket } from 'socket.io';
-import { Any } from 'typeorm';
 
 const app = createApp();
 const port = process.env.PORT || 3000;

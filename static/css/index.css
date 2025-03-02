@@ -17,32 +17,74 @@
   width: 100%;
   overflow-y: auto;
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   padding: 10px;
+  box-sizing: border-box;
+}
+
+/* 입력 영역 */
+.input-area {
+  display: flex;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.input-area input {
+  flex-grow: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  margin-right: 5px;
+}
+
+.input-area button {
+  padding: 10px 15px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
 }
 
 /* 내가 보낸 메시지 */
 .me {
   align-self: flex-end;
-  width: 90%;
-  margin: auto;
-  background-color: lemonchiffon;
-  border-radius: 5px;
-  margin-top: 10px;
+  background-color: #fff0a5; /* 카카오톡 노란색과 유사 */
+  border-radius: 15px;
+  padding: 10px 15px;
+  margin: 5px 0;
   max-width: 70%;
-  text-align: right;
+  word-break: break-word;
+  text-align: left;
+  position: relative;
 }
 
 /* 상대방이 보낸 메시지 */
 .other {
   align-self: flex-start;
-  width: 90%;
-  margin: auto;
   background-color: white;
-  border-radius: 5px;
-  margin-top: 10px;
+  border-radius: 15px;
+  padding: 10px 15px;
+  margin: 5px 0;
   max-width: 70%;
+  word-break: break-word;
   text-align: left;
+  position: relative;
+}
+
+/* 서버 메시지 스타일 */
+.connect,
+.disconnect {
+  width: 90%;
+  margin: 10px auto;
+  background-color: rgba(200, 200, 200, 0.5);
+  border-radius: 10px;
+  padding: 8px;
+  text-align: center;
+  font-size: 12px;
+  color: #555;
 }
 
 /* .connect,
