@@ -25,7 +25,6 @@ socket.on('update', function (data) {
   var chat = document.getElementById('chat');
 
   var message = document.createElement('div');
-  // var node = document.createTextNode(`${data.name}: ${data.message}`);
   var className = '';
 
   // 타입에 따라 적용할 클래스를 다르게 지정
@@ -49,7 +48,6 @@ socket.on('update', function (data) {
   message.classList.add(className);
   chat.appendChild(message);
   scrollToBottom();
-  // message.appendChild(node);
 });
 
 /* 메시지 전송 함수 */
@@ -78,7 +76,7 @@ function send() {
 
 document.addEventListener('DOMContentLoaded', function () {
   var input = document.getElementById('test');
-  input.addEventListener('keypress', function () {
+  input.addEventListener('keypress', function (e) {
     if (e.key === 'Enter') {
       send();
     }
