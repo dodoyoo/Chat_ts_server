@@ -24,30 +24,34 @@ socket.on('connect', function () {
 socket.on('update', function (data) {
   var chat = document.getElementById('chat');
 
-  var message = document.createElement('div');
-  var className = '';
-
-  // 타입에 따라 적용할 클래스를 다르게 지정
-  switch (data.type) {
-    case 'message':
-      className = 'other';
-      message.textContent = `${data.name}: ${data.message}`;
-      break;
-
-    case 'connect':
-      className = 'connect';
-      message.textContent = data.message;
-      break;
-
-    case 'disconnect':
-      className = 'disconnect';
-      message.textContent = data.message;
-      break;
+  // 접속 및 연결 해제 메시지는 표시하지 않음
+  if (data.type === 'connect' || data.type === 'disconnect') {
+    return; // 함수 실행 중단
+  } else if (data.type === 'message') {
+    var message = document.createElement('div');
+    message.classList.add('other');
+    message.textContent = `${data.name}: ${data.message}`;
+    chat.appendChild(message);
+    scrollToBottom();
   }
 
-  message.classList.add(className);
-  chat.appendChild(message);
-  scrollToBottom();
+  // 타입에 따라 적용할 클래스를 다르게 지정
+  // switch (data.type) {
+  //   case 'message':
+  //     className = 'other';
+  //     message.textContent = `${data.name}: ${data.message}`;
+  //     break;
+
+  //   case 'connect':
+  //     className = 'connect';
+  //     message.textContent = data.message;
+  //     break;
+
+  //   case 'disconnect':
+  //     className = 'disconnect';
+  //     message.textContent = data.message;
+  //     break;
+  // }
 });
 
 /* 메시지 전송 함수 */
@@ -81,4 +85,6 @@ document.addEventListener('DOMContentLoaded', function () {
       send();
     }
   });
+
+  input.focus();
 });

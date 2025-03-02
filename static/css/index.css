@@ -13,7 +13,8 @@
 
 /* 채팅 영역 */
 #chat {
-  height: 90%;
+  /* height: 90%; */
+  flex-grow: 1;
   width: 100%;
   overflow-y: auto;
   display: flex;
@@ -51,7 +52,7 @@
 /* 내가 보낸 메시지 */
 .me {
   align-self: flex-end;
-  background-color: #fff0a5; /* 카카오톡 노란색과 유사 */
+  background-color: #fff0a5;
   border-radius: 15px;
   padding: 10px 15px;
   margin: 5px 0;
@@ -77,12 +78,13 @@
 /* 서버 메시지 스타일 */
 .connect,
 .disconnect {
-  width: 90%;
+  display: none;
+  /* width: 90%;
   margin: 10px auto;
   background-color: rgba(200, 200, 200, 0.5);
   border-radius: 10px;
   padding: 8px;
   text-align: center;
   font-size: 12px;
-  color: #555;
+  color: #555; */
 }
